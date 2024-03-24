@@ -6,37 +6,52 @@ const fieldCharacter = '░';
 const pathCharacter = '*';
 
 class Field {
-    constructor() {
+    constructor(height, width, percentage) {
        this._field = []; 
+       this._height = height;
+       this._width = width;
+       this._percentage = percentage;
     }
 
     get field() {
         return this._field;
     }
 
+    get height() {
+        return this._height;
+    }
+
+    get width() {
+        return this._width;
+    }
+
+    get percentage() {
+        return this._percentage;
+    }
+
 
     // generate field for game
-    generateField(height, width, percentage) {
-        let numHoles = (height * width) * (percentage / 100);
-        for (var i=0; i < height; i++) {
+    generateField() {
+        let numHoles = (this.height * this.width) * (this.percentage / 100);
+        for (var i=0; i < this.height; i++) {
             this.field.push([]);
         }        
-        for (var i=0; i < height; i++) {
-            for (var j=0; j< width; j++) {
+        for (var i=0; i < this.height; i++) {
+            for (var j=0; j< this.width; j++) {
                 this.field[i].push(fieldCharacter);
             }
         }
         
         for (var k=numHoles; k >= 0; k--) {
-            let holeX = Math.floor(Math.random() * width);
-            let holeY = Math.floor(Math.random() * height);
-            this._field[holeY][holeX] = hole;
+            let holeX = Math.floor(Math.random() * this.width);
+            let holeY = Math.floor(Math.random() * this.height);
+            this.field[holeY][holeX] = hole;
         } 
-        this._field[0][0] = pathCharacter;
+        this.field[0][0] = pathCharacter;
         
         while (true) {
-            let hatX = Math.floor(Math.random() * width);
-            let hatY = Math.floor(Math.random() * height);
+            let hatX = Math.floor(Math.random() * this.width);
+            let hatY = Math.floor(Math.random() * this.height);
             
             if (hatX != 0 && hatY != 0) {
                 this.field[hatY][hatX] = hat;
@@ -54,6 +69,6 @@ class Field {
 }
 
 
-const myField = new Field();
-myField.generateField(8,6,30);
+const myField = new Field(12,8,30);
+myField.generateField();
 myField.printField();
