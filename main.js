@@ -14,6 +14,8 @@ class Field {
         return this._field;
     }
 
+
+    // generate field for game
     generateField(height, width, percentage) {
         let numHoles = (height * width) * (percentage / 100);
         for (var i=0; i < height; i++) {
@@ -36,15 +38,22 @@ class Field {
             let hatX = Math.floor(Math.random() * width);
             let hatY = Math.floor(Math.random() * height);
             
-            if (hatX != 0 || hatY != 0) {
+            if (hatX != 0 && hatY != 0) {
                 this.field[hatY][hatX] = hat;
                 break;
             }
         }
-        
-        console.log(this.field);
     }
+        
+    printField() {
+        for (var i = 0; i < this.field.length; i++) {
+            console.log(this.field[i].join(''));
+        } 
+    }
+
 }
 
+
 const myField = new Field();
-myField.generateField(12,4,40);
+myField.generateField(8,6,30);
+myField.printField();
