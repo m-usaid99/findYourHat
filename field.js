@@ -1,4 +1,3 @@
-const prompt = require('prompt-sync')({sigint: true});
 
 const hat = '^';
 const hole = 'O';
@@ -72,8 +71,10 @@ class Field {
 
 }
 
-
-const myField = new Field(12,8,30);
-myField.generateField();
-myField.printField();
-field
+module.exports = {
+    Field,
+    hat, 
+    hole, 
+    pathCharacter, 
+    fieldCharacter
+};
