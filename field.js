@@ -30,7 +30,6 @@ class Field {
     }
 
 
-    // generate field for game
     /* TODO: add a way to make the game not unwinnable
     */
 
