@@ -18,8 +18,8 @@ class Game {
     printGame() {
         this._field.printField();
     }
-
     
+     
 
 }
 
@@ -53,7 +53,5 @@ class Player {
         this.x++;
     }
 }
-
-
 
 const game = new Game(12, 8, 30);
